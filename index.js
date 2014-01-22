@@ -32,13 +32,18 @@ module.exports = function (file, condition) {
 		if (!condition.length) {
 			throw new Error('gulp-match: empty glob array');
 		}
-		var i = 0;
+		var i = 0, step, ret = false;
 		for (i = 0; i < condition.length; i++) {
-			if (minimatch(file.path, condition[i])) {
-				return true;
+			step = condition[i];
+			if (step[0] === '!') {
+				if (minimatch(file.path, step.slice(1))) {
+					return false;
+				}
+			} else if (minimatch(file.path, step)) {
+				ret = true;
 			}
 		}
-		return false;
+		return ret;
 	}
 
 	if (typeof condition === 'object') {

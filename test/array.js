@@ -53,5 +53,24 @@ describe('gulp-match', function() {
 			actualErr.message.indexOf('array').should.be.above(-1);
 			actualErr.message.indexOf('empty').should.be.above(-1);
 		});
+
+		var multiPatternTest = function (file, expected) {
+			// arrange
+			var pattern = ['*', '!*.json', '!*rc'];
+
+			// act
+			var actual = gulpmatch({path:file}, pattern);
+
+			// assert
+			actual.should.equal(expected);
+		};
+
+		it('should filter files with negate pattern and leading dot', function() {
+			multiPatternTest('included.js', true);
+			multiPatternTest('package.json', false);
+			multiPatternTest('.jshintrc', false);
+			multiPatternTest('app.js', true);
+		});
+
 	});
 });
