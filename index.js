@@ -1,6 +1,4 @@
-/*jshint node:true */
-
-"use strict";
+'use strict';
 
 var minimatch = require('minimatch');
 
