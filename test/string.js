@@ -1,12 +1,10 @@
-/*jshint node:true */
 /*global describe:false, it:false */
 
-"use strict";
+'use strict';
 
 var gulpmatch = require('../');
 var getFakeFile = require('./fixtures/fakefile');
 require('should');
-require('mocha');
 
 describe('gulp-match', function() {
 	describe('when given a string,', function() {

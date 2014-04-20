@@ -1,11 +1,9 @@
-/*jshint node:true */
 /*global describe:false, it:false */
 
-"use strict";
+'use strict';
 
 var gulpmatch = require('../');
 require('should');
-require('mocha');
 
 describe('gulp-match', function() {
 	describe('when given a file stat object,', function() {
