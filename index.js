@@ -15,6 +15,12 @@ module.exports = function (file, condition) {
 		return !!condition(file);
 	}
 
+	if (typeof condition === 'string' && condition.match(/^\*\.[a-z\.]+$/)) {
+		console.log('swapping to regex: '+condition);
+		var newCond = condition.substring(1).replace(/\./g,'\\.')+'$';
+		condition = new RegExp(newCond);
+	}
+
 	if (typeof condition === 'object' && typeof condition.test === 'function' && condition.hasOwnProperty('source')) {
 		// FRAGILE: ASSUME: it's a regex
 		return condition.test(file.path);

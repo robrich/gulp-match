@@ -33,5 +33,31 @@ describe('gulp-match', function() {
 			// assert
 			actual.should.equal(expected);
 		});
+
+		it('should return true when given a suffix string', function() {
+			// arrange
+			var file = getFakeFile('fake/path.js');
+			var regex = '*.js';
+			var expected = true;
+
+			// act
+			var actual = gulpmatch(file, regex);
+
+			// assert
+			actual.should.equal(expected);
+		});
+
+		it('should return true when given a complex suffix string', function() {
+			// arrange
+			var file = getFakeFile('fake/path.min.less.css');
+			var regex = '*.less.css';
+			var expected = true;
+
+			// act
+			var actual = gulpmatch(file, regex);
+
+			// assert
+			actual.should.equal(expected);
+		});
 	});
 });
