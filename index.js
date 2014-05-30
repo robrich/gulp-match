@@ -16,7 +16,6 @@ module.exports = function (file, condition) {
 	}
 
 	if (typeof condition === 'string' && condition.match(/^\*\.[a-z\.]+$/)) {
-		console.log('swapping to regex: '+condition);
 		var newCond = condition.substring(1).replace(/\./g,'\\.')+'$';
 		condition = new RegExp(newCond);
 	}
