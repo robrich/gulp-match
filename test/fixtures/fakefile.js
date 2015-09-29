@@ -4,6 +4,6 @@
 
 module.exports = function (path) {
 	return {
-		path: path
+		relative: path
 	};
 };

@@ -22,12 +22,12 @@ module.exports = function (file, condition) {
 
 	if (typeof condition === 'object' && typeof condition.test === 'function' && condition.hasOwnProperty('source')) {
 		// FRAGILE: ASSUME: it's a regex
-		return condition.test(file.path);
+		return condition.test(file.relative);
 	}
 
 	if (typeof condition === 'string') {
 		// FRAGILE: ASSUME: it's a minimatch expression
-		return minimatch(file.path, condition);
+		return minimatch(file.relative, condition);
 	}
 
 	if (Array.isArray(condition)) {
@@ -39,10 +39,10 @@ module.exports = function (file, condition) {
 		for (i = 0; i < condition.length; i++) {
 			step = condition[i];
 			if (step[0] === '!') {
-				if (minimatch(file.path, step.slice(1))) {
+				if (minimatch(file.relative, step.slice(1))) {
 					return false;
 				}
-			} else if (minimatch(file.path, step)) {
+			} else if (minimatch(file.relative, step)) {
 				ret = true;
 			}
 		}

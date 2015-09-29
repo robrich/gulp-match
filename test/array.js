@@ -57,7 +57,7 @@ describe('gulp-match', function() {
 			var pattern = ['*', '!*.json', '!*rc'];
 
 			// act
-			var actual = gulpmatch({path:file}, pattern);
+			var actual = gulpmatch({relative:file}, pattern);
 
 			// assert
 			actual.should.equal(expected);
