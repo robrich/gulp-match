@@ -1,7 +1,7 @@
 gulp-match ![status](https://secure.travis-ci.org/robrich/gulp-match.png?branch=master)
 ==========
 
-Does a vinyl file match a condition?  This function checks the condition on the `file.path` of the 
+Does a vinyl file match a condition?  This function checks the condition on the `file.path` of the
 [vinyl-fs](https://github.com/wearefractal/vinyl-fs) file passed to it.
 
 Condition can be a boolean, a function, a regular expression, a glob string (or array of glob strings), or a stat filter object
@@ -15,10 +15,11 @@ var gulpmatch = require('gulp-match');
 var map = require('map-stream');
 
 var condition = true; // TODO: add business logic here
+var options = null; // Optionally pass options to minimatch
 
 vinylfs.src('path/to/file.js')
   .pipe(map(function (file, cb) {
-    var match = gulpmatch(file, condition);
+    var match = gulpmatch(file, condition, options);
     if (match) {
       // it matched, do stuff
     }
@@ -80,7 +81,7 @@ var match = gulpmatch(file, {isFile:true});
 var match = gulpmatch(file, {isDirectory:false});
 ```
 
-If the condition is an object with a `isFile` or `isDirectory` property, it'll match the details on the 
+If the condition is an object with a `isFile` or `isDirectory` property, it'll match the details on the
 [vinyl-fs](https://github.com/wearefractal/vinyl-fs) file's [`stat`](http://nodejs.org/api/fs.html#fs_class_fs_stats) object.
 
 #### else
@@ -95,6 +96,12 @@ var match = gulpmatch(file, '');
 ```
 
 If there's no matching rule from the rules above, it'll return `true` for truthy conditions, `false` for falsey conditions (including `undefined`).
+
+### options
+
+#### minimatch options object
+
+See [https://github.com/isaacs/minimatch](minimatch) for options docs.
 
 
 LICENSE

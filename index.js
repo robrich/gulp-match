@@ -2,7 +2,7 @@
 
 var minimatch = require('minimatch');
 
-module.exports = function (file, condition) {
+module.exports = function (file, condition, options) {
 	if (!file) {
 		throw new Error('gulp-match: vinyl file required');
 	}
@@ -27,7 +27,7 @@ module.exports = function (file, condition) {
 
 	if (typeof condition === 'string') {
 		// FRAGILE: ASSUME: it's a minimatch expression
-		return minimatch(file.relative, condition);
+		return minimatch(file.relative, condition, options);
 	}
 
 	if (Array.isArray(condition)) {
@@ -39,10 +39,10 @@ module.exports = function (file, condition) {
 		for (i = 0; i < condition.length; i++) {
 			step = condition[i];
 			if (step[0] === '!') {
-				if (minimatch(file.relative, step.slice(1))) {
+				if (minimatch(file.relative, step.slice(1), options)) {
 					return false;
 				}
-			} else if (minimatch(file.relative, step)) {
+			} else if (minimatch(file.relative, step, options)) {
 				ret = true;
 			}
 		}
