@@ -1,7 +1,7 @@
 {
   "name": "gulp-match",
   "description": "Does a vinyl file match a condition?",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/robrich/gulp-match",
   "repository": "git://github.com/robrich/gulp-match.git",
   "author": "Rob Richardson (http://robrich.org/)",
