@@ -34,11 +34,24 @@ describe('gulp-match', function() {
 			actual.should.equal(expected);
 		});
 
-		it('should return true when given a suffix string', function() {
+		it('should return true when given suffix string matches', function() {
 			// arrange
 			var file = getFakeFile('fake/path.js');
 			var regex = '*.js';
 			var expected = true;
+
+			// act
+			var actual = gulpmatch(file, regex);
+
+			// assert
+			actual.should.equal(expected);
+		});
+
+		it('should return false when given suffix string doesn\'t match', function() {
+			// arrange
+			var file = getFakeFile('fake/path.js');
+			var regex = '*.txt';
+			var expected = false;
 
 			// act
 			var actual = gulpmatch(file, regex);
