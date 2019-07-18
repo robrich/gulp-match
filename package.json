@@ -1,7 +1,7 @@
 {
   "name": "gulp-match",
   "description": "Does a vinyl file match a condition?",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "homepage": "https://github.com/robrich/gulp-match",
   "repository": "git://github.com/robrich/gulp-match.git",
   "author": "Rob Richardson (http://robrich.org/)",
@@ -17,14 +17,11 @@
   },
   "devDependencies": {
     "jshint": "^2.9.4",
-    "mocha": "^3.1.2",
-    "should": "^11.1.1"
+    "mocha": "^6.1.4",
+    "should": "^13.2.3"
   },
   "scripts": {
     "test": "mocha && jshint ."
-  },
-  "engines": {
-    "node": ">= 0.10.0"
   },
   "license": "MIT"
 }
